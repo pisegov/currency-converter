@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
 
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.bundles.compose)
 
     implementation(libs.dagger)
@@ -74,6 +75,9 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     implementation(projects.core.network)
+    implementation(projects.core.domain)
+    implementation(projects.core.ui)
+    implementation(projects.features.converter)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

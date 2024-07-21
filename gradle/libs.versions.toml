@@ -25,6 +25,7 @@ retrofit = "2.10.0"
 retrofitAdaptersResult = "1.0.9"
 okHttpLoggingInterceptor = "4.12.0"
 coroutines = "1.7.3"
+uiTooling = "1.6.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,11 +45,9 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-
-coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
 
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
-kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinxSerialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json-jvm", version.ref = "kotlinxSerialization" }
 
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
@@ -56,7 +55,6 @@ dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = 
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-#kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 kotlinx-serialization-converter = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
 retrofit-adapters-result = { group = "com.github.skydoves", name = "retrofit-adapters-result", version.ref = "retrofitAdaptersResult" }
 okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttpLoggingInterceptor" }

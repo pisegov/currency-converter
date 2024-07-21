@@ -1,6 +1,8 @@
 package com.myaxa.currency_converter.di
 
-import com.myaxa.network.NetworkDataSource
+import androidx.lifecycle.ViewModelProvider
+import com.myaxa.converter.di.ConverterFeatureModule
+import com.myaxa.ui.viewModel.ViewModelFactoryModule
 import dagger.Component
 import dagger.Module
 import javax.inject.Scope
@@ -8,17 +10,22 @@ import javax.inject.Scope
 @ApplicationScope
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent {
+
     @Component.Factory
     interface Factory {
-        fun create(
-
-        ): ApplicationComponent
+        fun create(): ApplicationComponent
     }
 
-    val networkDataSource: NetworkDataSource
+    val viewModelFactory: ViewModelProvider.Factory
 }
 
-@Module(includes = [NetworkModule::class])
+@Module(
+    includes = [
+        NetworkModule::class,
+        ViewModelFactoryModule::class,
+        ConverterFeatureModule::class,
+    ]
+)
 interface ApplicationModule
 
 @Scope

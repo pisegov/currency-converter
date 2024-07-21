@@ -1,6 +1,6 @@
-package com.myaxa.network
+package com.myaxa.converter.data
 
-import com.myaxa.network.model.CurrencyResponse
+import com.myaxa.converter.data.model.CurrencyResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

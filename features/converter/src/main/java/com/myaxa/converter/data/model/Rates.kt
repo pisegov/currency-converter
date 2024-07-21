@@ -1,7 +1,8 @@
-package com.myaxa.network.model
+package com.myaxa.converter.data.model
 
 import kotlinx.serialization.Serializable
 
+@Suppress("PropertyName")
 @Serializable
 data class Rates(
     val AUD: Double,
@@ -36,5 +37,5 @@ data class Rates(
     val THB: Double,
     val TRY: Double,
     val USD: Double,
-    val ZAR: Double
+    val ZAR: Double,
 )

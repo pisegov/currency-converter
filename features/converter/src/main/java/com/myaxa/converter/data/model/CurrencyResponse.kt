@@ -1,4 +1,4 @@
-package com.myaxa.network.model
+package com.myaxa.converter.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
