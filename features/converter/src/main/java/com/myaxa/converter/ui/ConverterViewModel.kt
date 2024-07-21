@@ -14,8 +14,8 @@ import com.myaxa.converter.ui.model.Event
 import com.myaxa.converter.ui.model.State
 import com.myaxa.converter.ui.model.amountIsValid
 import com.myaxa.converter.ui.model.toDomainModel
-import com.myaxa.ui.onFailure
-import com.myaxa.ui.takeSuccess
+import com.myaxa.util.onFailure
+import com.myaxa.util.takeSuccess
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.SendChannel

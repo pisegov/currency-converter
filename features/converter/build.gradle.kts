@@ -56,6 +56,7 @@ dependencies {
     implementation(projects.core.network)
     implementation(projects.core.domain)
     implementation(projects.core.ui)
+    implementation(projects.core.util)
 
     testImplementation(libs.junit)
 }
