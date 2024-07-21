@@ -1,6 +1,5 @@
-package com.myaxa.currency_converter.ui.theme
+package com.myaxa.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

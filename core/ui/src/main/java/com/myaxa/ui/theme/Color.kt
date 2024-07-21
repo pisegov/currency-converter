@@ -1,4 +1,4 @@
-package com.myaxa.currency_converter.ui.theme
+package com.myaxa.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
