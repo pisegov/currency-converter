@@ -78,6 +78,7 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.core.ui)
     implementation(projects.features.converter)
+    implementation(projects.features.conversionResult)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
