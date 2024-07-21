@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.myaxa.coverter"
+    namespace = "com.myaxa.converter"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {

@@ -19,7 +19,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.myaxa.ui.R as CoreUiR
 import com.myaxa.domain.Currency
 
 @Composable
@@ -44,7 +46,7 @@ internal fun CurrencyDropdown(
                 Text(text = currency.name)
                 Icon(
                     imageVector = Icons.Filled.ArrowDropDown,
-                    contentDescription = "Currency dropdown menu",
+                    contentDescription = stringResource(id = CoreUiR.string.currency_dropdown_menu),
                 )
                 DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                     Currency.entries.forEach {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="converter_title">Конвертер валют</string>
+    <string name="amount">Сумма</string>
+    <string name="error">Ошибка</string>
+    <string name="invalid_amount">Это неверная сумма</string>
+    <string name="from">Из</string>
+    <string name="to">В</string>
+    <string name="currency_dropdown_menu">Меню выбора валюты</string>
+    <string name="convert">Конвертировать</string>
+    <string name="network_error">Ошибка сети</string>
+    <string name="conversion_result_title">Результат конвертации</string>
+    <string name="go_back">Назад</string>
+</resources>

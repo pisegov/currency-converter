@@ -10,12 +10,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,13 +44,18 @@ internal fun ConversionResultScreen(
             )
     ) {
         Text(
-            text = "Conversion Result",
+            text = stringResource(id = CoreUiR.string.conversion_result_title),
             textAlign = TextAlign.Center,
-            fontSize = 32.sp,
-            lineHeight = 32.sp,
+            style = MaterialTheme.typography.titleLarge,
         )
         Text(
-            text = "${arguments.amount} ${arguments.fromCurrency} ≈ ${arguments.result} ${arguments.toCurrency}",
+            text = stringResource(
+                id = CoreUiR.string.conversion_result,
+                arguments.amount,
+                arguments.fromCurrency,
+                arguments.result,
+                arguments.toCurrency,
+            ),
             fontSize = 20.sp,
             lineHeight = 20.sp,
         )
@@ -60,10 +67,10 @@ internal fun ConversionResultScreen(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Go back",
+                    contentDescription = stringResource(id = CoreUiR.string.go_back),
                 )
                 Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                Text(text = "Go back")
+                Text(text = stringResource(id = CoreUiR.string.go_back))
             }
         }
     }
@@ -75,7 +82,10 @@ private fun ConversionResultScreenPreview() {
     Surface {
         ConversionResultScreen(
             ConversionResultRoute(
-                amount = "1.0", fromCurrency = Currency.USD.name, toCurrency = Currency.RUB.name, result = "87.0"
+                amount = "1.0",
+                fromCurrency = Currency.USD.name,
+                toCurrency = Currency.RUB.name,
+                result = "87.0"
             )
         )
     }

@@ -56,9 +56,7 @@ internal class Reducer @Inject constructor() {
 
         is Event.System.LoadingError -> {
             state.copy(
-                conversionOperationStatus = ConversionOperationStatus.NetworkError(
-                    event.throwable.message ?: "Unexpected network error"
-                )
+                conversionOperationStatus = ConversionOperationStatus.NetworkError
             )
         }
 

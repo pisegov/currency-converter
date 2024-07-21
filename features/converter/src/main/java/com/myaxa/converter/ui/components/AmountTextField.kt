@@ -13,8 +13,10 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.myaxa.ui.R as CoreUiR
 
 @Composable
 internal fun AmountTextField(
@@ -28,19 +30,23 @@ internal fun AmountTextField(
         value = text,
         onValueChange = onValueChange,
         modifier = modifier.widthIn(100.dp, 150.dp),
-        label = { Text(text = "Amount") },
+        label = { Text(text = stringResource(id = CoreUiR.string.amount)) },
         supportingText = {
             if (isError) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "This is not a valid amount",
+                    text = stringResource(id = CoreUiR.string.invalid_amount),
                     color = MaterialTheme.colorScheme.error
                 )
             }
         },
         trailingIcon = {
             if (isError) {
-                Icon(Icons.Filled.Info,"Error", tint = MaterialTheme.colorScheme.error)
+                Icon(
+                    Icons.Filled.Info,
+                    stringResource(id = CoreUiR.string.error),
+                    tint = MaterialTheme.colorScheme.error
+                )
             }
         },
         singleLine = true,

@@ -9,7 +9,7 @@ internal sealed interface ConversionOperationStatus {
 
     data object Loading : ConversionOperationStatus
 
-    data class NetworkError(val message: String) : ConversionOperationStatus
+    data object NetworkError : ConversionOperationStatus
 
     data object AmountValidationError : ConversionOperationStatus
 }

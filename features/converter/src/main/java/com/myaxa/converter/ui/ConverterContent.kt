@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,6 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -66,9 +69,9 @@ internal fun ConverterContent(
                 )
         ) {
             Text(
-                text = "Currency converter",
-                fontSize = 32.sp,
-                lineHeight = 32.sp,
+                text = stringResource(id = CoreUiR.string.converter_title),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleLarge,
             )
             DataInputFields(
                 conversionInfo = state.conversionInfo,
@@ -80,7 +83,10 @@ internal fun ConverterContent(
             Button(
                 onClick = { sendUserEvent(Event.User.Convert) },
             ) {
-                Text(text = "Convert", modifier = Modifier.padding(16.dp))
+                Text(
+                    text = stringResource(id = CoreUiR.string.convert),
+                    modifier = Modifier.padding(16.dp)
+                )
             }
         }
     }

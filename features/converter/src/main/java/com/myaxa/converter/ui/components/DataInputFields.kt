@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.Event
+import com.myaxa.ui.R as CoreUiR
 
 @Composable
 internal fun DataInputFields(
@@ -33,12 +35,12 @@ internal fun DataInputFields(
         )
         CurrencyDropdown(
             currency = conversionInfo.fromCurrency,
-            topText = "From",
+            topText = stringResource(id = CoreUiR.string.from),
             onOptionSelected = { sendUserEvent(Event.User.UpdateFromCurrency(it)) },
         )
         CurrencyDropdown(
             currency = conversionInfo.toCurrency,
-            topText = "To",
+            topText = stringResource(id = CoreUiR.string.to),
             onOptionSelected = { sendUserEvent(Event.User.UpdateToCurrency(it)) },
         )
     }
