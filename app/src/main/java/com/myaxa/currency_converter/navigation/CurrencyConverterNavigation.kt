@@ -9,7 +9,7 @@ import com.myaxa.conversion_result.navigation.conversionResultDestination
 import com.myaxa.conversion_result.navigation.navigateToConversionResult
 import com.myaxa.converter.navigation.ConverterScreenRoute
 import com.myaxa.converter.navigation.converterScreenDestination
-import com.myaxa.converter.ui.model.Effect
+import com.myaxa.converter.ui.model.ConverterScreenEffect
 
 @Composable
 fun CurrencyConverterNavigation(navController: NavHostController, modifier: Modifier = Modifier) {
@@ -18,7 +18,7 @@ fun CurrencyConverterNavigation(navController: NavHostController, modifier: Modi
         converterScreenDestination(
             effectsHandler = { effect ->
                 when (effect) {
-                    is Effect.NavigateToResult -> {
+                    is ConverterScreenEffect.NavigateToResult -> {
                         with(effect.result) {
                             navController.navigateToConversionResult(
                                 amount = info.amount.toString(),

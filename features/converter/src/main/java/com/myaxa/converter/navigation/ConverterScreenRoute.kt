@@ -4,14 +4,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.myaxa.converter.ui.ConverterScreen
-import com.myaxa.converter.ui.model.Effect
+import com.myaxa.converter.ui.model.ConverterScreenEffect
 import kotlinx.serialization.Serializable
 
 @Serializable
 data object ConverterScreenRoute
 
 fun NavGraphBuilder.converterScreenDestination(
-    effectsHandler: (Effect) -> Unit,
+    effectsHandler: (ConverterScreenEffect) -> Unit,
     modifier: Modifier = Modifier,
 ) {
 

@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.myaxa.converter.ui.model.ConversionOperationStatus.*
-import com.myaxa.converter.ui.model.Effect
+import com.myaxa.converter.ui.model.ConverterScreenEffect
 import com.myaxa.converter.ui.model.Event
 import com.myaxa.ui.viewModel.daggerViewModel
 
@@ -16,7 +16,7 @@ import com.myaxa.ui.viewModel.daggerViewModel
 internal fun ConverterScreen(
     modifier: Modifier = Modifier,
     viewModel: ConverterViewModel = daggerViewModel(),
-    handleEffect: (Effect) -> Unit,
+    handleEffect: (ConverterScreenEffect) -> Unit,
 ) {
 
     val uiState by viewModel.state.collectAsState()

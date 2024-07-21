@@ -9,7 +9,7 @@ import com.myaxa.converter.domain.DecimalFormatter
 import com.myaxa.converter.ui.model.Command
 import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.ConversionOperationStatus
-import com.myaxa.converter.ui.model.Effect
+import com.myaxa.converter.ui.model.ConverterScreenEffect
 import com.myaxa.converter.ui.model.Event
 import com.myaxa.converter.ui.model.State
 import com.myaxa.converter.ui.model.amountIsValid
@@ -44,8 +44,8 @@ internal class ConverterViewModel @Inject constructor(
         MutableStateFlow(State(ConversionInfoUi.empty(), ConversionOperationStatus.Idle))
     val state: StateFlow<State> = _state.asStateFlow()
 
-    private val _effects = Channel<Effect>()
-    val effects: Flow<Effect> = _effects.receiveAsFlow().distinctUntilChanged()
+    private val _effects = Channel<ConverterScreenEffect>()
+    val effects: Flow<ConverterScreenEffect> = _effects.receiveAsFlow().distinctUntilChanged()
 
     fun obtainUserEvent(userEvent: Event.User) = reduce(userEvent)
 
@@ -53,7 +53,7 @@ internal class ConverterViewModel @Inject constructor(
         _state.update { reducer.reduce(event, it, actor) }
     }
 
-    private fun sendEffect(effect: Effect) = _effects.trySend(effect)
+    private fun sendEffect(effect: ConverterScreenEffect) = _effects.trySend(effect)
 
     @OptIn(ObsoleteCoroutinesApi::class)
     private val actor: SendChannel<Command> = viewModelScope.actor {
@@ -89,7 +89,7 @@ internal class ConverterViewModel @Inject constructor(
             }
             .onEach {
                 reduce(Event.System.StopLoading)
-                sendEffect(Effect.NavigateToResult(it))
+                sendEffect(ConverterScreenEffect.NavigateToResult(it))
             }
             .launchIn(viewModelScope)
     }
