@@ -25,7 +25,7 @@ import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.ConversionOperationStatus
 import com.myaxa.converter.ui.model.Event
 import com.myaxa.converter.ui.model.State
-import com.myaxa.coverter.R
+import com.myaxa.ui.R as CoreUiR
 
 @Composable
 internal fun ConverterContent(
@@ -51,7 +51,7 @@ internal fun ConverterContent(
         if (state.conversionOperationStatus is ConversionOperationStatus.Loading) {
             CircularProgressIndicator(
                 Modifier.padding(
-                    top = dimensionResource(id = R.dimen.progress_indicator_top_padding),
+                    top = dimensionResource(id = CoreUiR.dimen.progress_indicator_top_padding),
                 )
             )
         }
@@ -61,8 +61,8 @@ internal fun ConverterContent(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(
-                    vertical = dimensionResource(id = R.dimen.content_vertical_padding),
-                    horizontal = dimensionResource(id = R.dimen.content_horizontal_padding),
+                    vertical = dimensionResource(id = CoreUiR.dimen.content_vertical_padding),
+                    horizontal = dimensionResource(id = CoreUiR.dimen.content_horizontal_padding),
                 )
         ) {
             Text(
