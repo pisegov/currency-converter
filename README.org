@@ -1,0 +1,62 @@
+#+title: Конвертер валют
+#+html: <a href>
+#+html:   <img src="assets/1.jpg" width="180"/>
+#+html:   <img src="assets/2.jpg" width="180"/>
+#+html: </a>
+
+Простое приложение для конвертации валют
+
+* Запуск
+- Для сборки использовалась Android Studio Koala 2024.1.1 c Android Gradle Plugin версии 8.5.1
+- В файл =local.properties= в корне проекта положить константы =BASE_URL= и =API_KEY=
+#+begin_src
+BASE_URL="https://api.freecurrencyapi.com/v1/"
+API_KEY="<ваш_api_key>"
+#+end_src
+
+* Описание реализации
+Состоит из двух экранов
+1. Экран ввода данных
+2. Экран отображения результата
+
+** Экран ввода данных
+Содержит:
+- Поле ввода суммы конвертации
+- Выпадающие списки для выбора базовой валюты и валюты конвертации
+- Кнопку для запуска конвертации
+
+** Экран отображения результата
+- Отображает сконвертированную сумму в выбранной валюте
+
+** Получение данных
+- Для получения текущих курсов валют используется [[https://freecurrencyapi.com][freecurrencyapi]]
+- Работа с API реализована с использованием [[https://square.github.io/retrofit/][Retrofit]] и [[https://square.github.io/okhttp/][OkHttp]]
+
+** Реактивный подход
+- Для асинхронной работы с сетью использованы [[https://github.com/Kotlin/kotlinx.coroutines][KotlinX Coroutines]]
+
+** Дополнительно
+- Поддержаны портретная и ландшафтная ориентации экрана
+- Поддержаны темная и светлая тема
+- Переведено на русский и английский языки
+
+* Описание модулей
+- =core:domain= - модуль с базовыми сущностями
+- =core:network= - модуль с базовой функциональносью работы с сетью
+- =core:ui= - общие ресурсы и утилиты для inject'a ViewModel'ей
+- =core:util= - полезные extension функции
+- =features:converter= - экран ввода данных и конвертации
+- =features:conversion-result= - экран отображения результата конвертации
+- =app= - сборка приложения
+
+* Технологический стек
+- Android SDK
+- [[https://developer.android.com/jetpack][Android Jetpack]]
+- [[https://kotlinlang.org/docs/whatsnew20.html][Kotlin 2.0]]
+- [[https://github.com/Kotlin/kotlinx.coroutines][KotlinX Coroutines]]
+- [[https://github.com/Kotlin/kotlinx.serialization][KotlinX Serialization]]
+- [[https://square.github.io/retrofit/][Retrofit]] + [[https://square.github.io/okhttp/][OkHttp]]
+- [[https://developer.android.com/develop/ui/compose][Jetpack Compose]]
+- [[https://developer.android.com/develop/ui/compose/navigation][Jetpack Compose Navigation]]
+- [[https://dagger.dev][Dagger]]
+- [[https://github.com/material-components/material-components-android][Material]]
