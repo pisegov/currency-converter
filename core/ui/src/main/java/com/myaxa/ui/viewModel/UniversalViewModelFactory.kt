@@ -14,7 +14,7 @@ import kotlin.reflect.KClass
  * @param viewModelProviders map of viewmodel providers for each viewmodel class
  */
 @Suppress("UNCHECKED_CAST")
-class UniversalViewModelFactory @Inject constructor(
+internal class UniversalViewModelFactory @Inject constructor(
     private val viewModelProviders: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>,
 ) : ViewModelProvider.Factory {
 
@@ -29,17 +29,15 @@ class UniversalViewModelFactory @Inject constructor(
  * so that every feature can use it without depending on this module
  */
 @Module
-interface UniversalViewModelFactoryModule {
+abstract class UniversalViewModelFactoryModule {
 
     @Binds
-    fun bindViewModelFactory(impl: UniversalViewModelFactory): ViewModelProvider.Factory
+    internal abstract fun bindViewModelFactory(impl: UniversalViewModelFactory): ViewModelProvider.Factory
 }
 
 /**
  * Designed to annotate [Binds] annotated methods that bind viewmodel implementations
  * into map of class-provider pairs for [UniversalViewModelFactory]
- *
- * Could be moved to other module to separate it from [UniversalViewModelFactory]
  */
 @Target(AnnotationTarget.FUNCTION, AnnotationTarget.FIELD, AnnotationTarget.TYPE)
 @Retention(AnnotationRetention.RUNTIME)
