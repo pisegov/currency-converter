@@ -4,6 +4,9 @@ import com.myaxa.converter.R
 import com.myaxa.converter.domain.model.DecimalStringValidationResult
 import javax.inject.Inject
 
+/**
+ * Maps error objects to resource ids for error message
+ */
 internal class DecimalStringValidationErrorMapper @Inject constructor() {
     fun mapErrorToMessage(validationResult: DecimalStringValidationResult.Error): Int {
         return when (validationResult) {

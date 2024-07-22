@@ -6,6 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 
+/**
+ * A function to get [UniversalViewModelFactory] and request ViewModel of [T]
+ * in Jetpack Compose
+ */
 @Composable
 inline fun <reified T : ViewModel> daggerViewModel(
     viewModelFactory: ViewModelProvider.Factory =

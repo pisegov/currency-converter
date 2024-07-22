@@ -12,9 +12,20 @@ import dagger.Provides
 import dagger.multibindings.IntoMap
 import retrofit2.create
 
+/**
+ * Module for exporting feature components
+ * so that [Application module][com.myaxa.currency_converter.di.ApplicationModule] can resolve
+ * dependencies for [ConverterViewModel]
+ */
 @Module
 abstract class ConverterFeatureModule {
 
+    /**
+     * Binds [ConverterViewModel] to common [ViewModel]
+     * for [UniversalViewModelFactory][com.myaxa.ui.viewModel.UniversalViewModelFactory]
+     *
+     * @see ViewModelKey
+     */
     @Binds
     @IntoMap
     @ViewModelKey(ConverterViewModel::class)

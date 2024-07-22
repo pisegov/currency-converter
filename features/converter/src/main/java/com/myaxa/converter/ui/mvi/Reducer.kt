@@ -4,8 +4,18 @@ import com.myaxa.converter.ui.model.ConversionOperationStatus
 import kotlinx.coroutines.channels.SendChannel
 import javax.inject.Inject
 
+/**
+ * Responsible for every state update
+ */
 internal class Reducer @Inject constructor() {
 
+    /**
+     * A method to update [screen state][com.myaxa.converter.ui.ConverterViewModel.state]
+     * based on the given event
+     * @param event state update event
+     * @param state current state value
+     * @param actor entity for complicated operations processing
+     */
     fun reduce(
         event: Event,
         state: State,

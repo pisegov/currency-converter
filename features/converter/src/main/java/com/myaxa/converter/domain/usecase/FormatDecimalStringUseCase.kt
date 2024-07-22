@@ -2,6 +2,13 @@ package com.myaxa.converter.domain.usecase
 
 import javax.inject.Inject
 
+/**
+ * Formats decimal number presented as a string
+ * Replaces commas with points, filters multiple points, leaves only 2 decimal places
+ *
+ * @return an intermediate version of a decimal number that may not be valid for conversion
+ * but is valid for further input
+ */
 internal class FormatDecimalStringUseCase @Inject constructor() {
 
     companion object {
@@ -22,6 +29,7 @@ internal class FormatDecimalStringUseCase @Inject constructor() {
             .filterMultiplePoints()
 
         val pointIndex = string.indexOf(POINT_CHARACTER)
+        // indexOf returns 0, if there is no such character
         if (pointIndex < 0) return string
 
         return if (pointIndex + DECIMAL_PLACES_OFFSET < string.length) {

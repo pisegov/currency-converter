@@ -2,7 +2,7 @@ package com.myaxa.currency_converter.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.myaxa.converter.di.ConverterFeatureModule
-import com.myaxa.ui.viewModel.ViewModelFactoryModule
+import com.myaxa.ui.viewModel.UniversalViewModelFactoryModule
 import dagger.Component
 import dagger.Module
 import javax.inject.Scope
@@ -22,7 +22,7 @@ interface ApplicationComponent {
 @Module(
     includes = [
         NetworkModule::class,
-        ViewModelFactoryModule::class,
+        UniversalViewModelFactoryModule::class,
         ConverterFeatureModule::class,
     ]
 )

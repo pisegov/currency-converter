@@ -2,8 +2,14 @@ package com.myaxa.converter.ui.mvi
 
 import com.myaxa.domain.Currency
 
+/**
+ * An event for changing the [screen state][com.myaxa.converter.ui.ConverterViewModel.state]
+ */
 internal sealed interface Event {
 
+    /**
+     * A user interaction event
+     */
     sealed interface User : Event {
 
         data class UpdateAmount(val value: String) : User
@@ -12,11 +18,15 @@ internal sealed interface Event {
 
         data class UpdateToCurrency(val value: Currency) : User
 
-        data object SetNetworkErrorShown : User
-
         data object Convert : User
+
+        data object SetNetworkErrorShown : User
     }
 
+    /**
+     * Events that comes from [actor][com.myaxa.converter.ui.ConverterViewModel.actor]
+     * Designed to return some long operation result to change the screen state
+     */
     sealed interface System : Event {
 
         data object StartLoading : System

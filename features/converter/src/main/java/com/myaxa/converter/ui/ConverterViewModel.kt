@@ -55,6 +55,12 @@ internal class ConverterViewModel @Inject constructor(
 
     private fun sendEffect(effect: ConverterScreenEffect) = _effects.trySend(effect)
 
+    /**
+     * Designed to perform complex operations
+     * Receives [Command] from [Reducer] to perform operation
+     * Sends [Event.System] to [Reducer] to update the [state] with operation result
+     * Also sends [ConverterScreenEffect] based on operation result to UI
+     */
     @OptIn(ObsoleteCoroutinesApi::class)
     private val actor: SendChannel<Command> = viewModelScope.actor {
         for (command in channel) {

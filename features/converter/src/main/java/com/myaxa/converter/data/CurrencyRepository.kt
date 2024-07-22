@@ -10,7 +10,7 @@ internal class CurrencyRepository @Inject constructor(
     private val networkDataSource: NetworkDataSource,
 ) {
 
-    fun getLatestCurrency(baseCurrency: Currency = Currency.USD): Flow<Result<Rates>> {
-        return flow { emit(networkDataSource.getLatest(baseCurrency.name).map { it.rates }) }
+    fun getLatestCurrencyRates(baseCurrency: Currency = Currency.USD): Flow<Result<Rates>> {
+        return flow { emit(networkDataSource.getLatestCurrencyRates(baseCurrency.name).map { it.rates }) }
     }
 }

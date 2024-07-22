@@ -2,6 +2,9 @@ package com.myaxa.converter.data.model
 
 import kotlinx.serialization.Serializable
 
+/**
+ * Latest rates for each supported currency
+ */
 @Suppress("PropertyName")
 @Serializable
 data class Rates(

@@ -6,7 +6,7 @@ import kotlinx.coroutines.withContext
 
 internal class NetworkDataSource(private val api: CurrencyApi) {
 
-    suspend fun getLatest(base: String? = null): Result<CurrencyResponse> =
+    suspend fun getLatestCurrencyRates(base: String? = null): Result<CurrencyResponse> =
         withContext(Dispatchers.IO) {
             api.getLatest(base)
         }

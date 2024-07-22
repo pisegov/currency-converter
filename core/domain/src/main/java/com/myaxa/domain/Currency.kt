@@ -1,5 +1,8 @@
 package com.myaxa.domain
 
+/**
+ * Supported currency options
+ */
 enum class Currency {
     USD,
     EUR,
