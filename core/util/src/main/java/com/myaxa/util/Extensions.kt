@@ -3,7 +3,12 @@ package com.myaxa.util
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.takeWhile
+
+inline fun <T> Flow<Result<T>>.onSuccess(crossinline action: (value: T) -> Unit): Flow<Result<T>> {
+    return onEach {
+        it.onSuccess { value -> action(value) }
+    }
+}
 
 inline fun <T> Flow<Result<T>>.onFailure(crossinline action: (exception: Throwable) -> Unit): Flow<Result<T>> {
     return onEach {
@@ -11,6 +16,6 @@ inline fun <T> Flow<Result<T>>.onFailure(crossinline action: (exception: Throwab
     }
 }
 
-fun <T> Flow<Result<T>>.takeSuccess(): Flow<T> {
-    return takeWhile { it.isSuccess }.map { it.getOrThrow() }
+inline fun <T, R> Flow<Result<T>>.mapResult(crossinline transform: suspend (value: T) -> R): Flow<Result<R>> {
+    return map { result -> result.map { value -> transform(value) } }
 }

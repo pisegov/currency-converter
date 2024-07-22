@@ -2,10 +2,8 @@ package com.myaxa.converter.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.myaxa.converter.data.CurrencyRepository
-import com.myaxa.converter.data.model.Rates
-import com.myaxa.converter.domain.CurrencyConverter
-import com.myaxa.converter.domain.DecimalFormatter
+import com.myaxa.converter.domain.usecase.FormatDecimalStringUseCase
+import com.myaxa.converter.domain.usecase.PerformConversionUseCase
 import com.myaxa.converter.ui.model.Command
 import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.ConversionOperationStatus
@@ -15,7 +13,7 @@ import com.myaxa.converter.ui.model.State
 import com.myaxa.converter.ui.model.amountIsValid
 import com.myaxa.converter.ui.model.toDomainModel
 import com.myaxa.util.onFailure
-import com.myaxa.util.takeSuccess
+import com.myaxa.util.onSuccess
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.SendChannel
@@ -26,17 +24,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 internal class ConverterViewModel @Inject constructor(
-    private val repository: CurrencyRepository,
-    private val currencyConverter: CurrencyConverter,
-    private val decimalFormatter: DecimalFormatter,
+    private val performConversionUseCase: PerformConversionUseCase,
+    private val decimalStringFormatUseCase: FormatDecimalStringUseCase,
     private val reducer: Reducer,
 ) : ViewModel() {
 
@@ -62,10 +57,16 @@ internal class ConverterViewModel @Inject constructor(
             when (command) {
 
                 is Command.FormatDecimalString -> reduce(
-                    Event.System.DecimalStringFormatResult(decimalFormatter.format(command.string))
+                    Event.System.DecimalStringFormatResult(
+                        formattedString = decimalStringFormatUseCase(
+                            string = command.string,
+                        )
+                    )
                 )
 
-                is Command.PerformConversion -> performConversion(command.conversionInfo)
+                is Command.PerformConversion -> performConversion(
+                    conversionInfo = command.conversionInfo,
+                )
             }
         }
     }
@@ -78,19 +79,12 @@ internal class ConverterViewModel @Inject constructor(
         }
 
         reduce(Event.System.StartLoading)
-        repository.getLatestCurrency(conversionInfo.fromCurrency)
-            .onFailure { reduce(Event.System.LoadingError(it)) }
-            .takeSuccess()
-            .map { rates: Rates ->
-                currencyConverter.convert(
-                    rates,
-                    conversionInfo = conversionInfo.toDomainModel()
-                )
-            }
-            .onEach {
+        performConversionUseCase(conversionInfo = conversionInfo.toDomainModel())
+            .onSuccess {
                 reduce(Event.System.StopLoading)
                 sendEffect(ConverterScreenEffect.NavigateToResult(it))
             }
+            .onFailure { reduce(Event.System.LoadingError(it)) }
             .launchIn(viewModelScope)
     }
 }
