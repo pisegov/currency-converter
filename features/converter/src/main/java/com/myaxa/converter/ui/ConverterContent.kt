@@ -22,7 +22,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.myaxa.converter.ui.components.DataInputFields
 import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.ConversionOperationStatus
@@ -45,7 +44,7 @@ internal fun ConverterContent(
             .fillMaxSize()
             .clickable(
                 interactionSource = interactionSource,
-                indication = null
+                indication = null,
             ) {
                 focusManager.clearFocus()
             }
@@ -78,7 +77,7 @@ internal fun ConverterContent(
                 sendUserEvent = sendUserEvent,
                 isError = state.conversionOperationStatus
                         is ConversionOperationStatus.AmountValidationError,
-                clearFocus = { focusManager.clearFocus() }
+                clearFocus = { focusManager.clearFocus() },
             )
             Button(
                 onClick = { sendUserEvent(Event.User.Convert) },

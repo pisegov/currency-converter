@@ -8,8 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,21 +23,22 @@ import androidx.compose.ui.unit.dp
 import com.myaxa.ui.R as CoreUiR
 import com.myaxa.domain.Currency
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun CurrencyDropdown(
+internal fun CurrencyMenuButton(
     currency: Currency,
     modifier: Modifier = Modifier,
     topText: String = "",
     onOptionSelected: (Currency) -> Unit = {},
 ) {
-    var expanded by remember { mutableStateOf(false) }
+    var showBottomSheet by remember { mutableStateOf(false) }
 
     Column(modifier = modifier) {
         if (topText.isNotEmpty()) Text(text = topText)
         Box(contentAlignment = Alignment.Center) {
             Row(
                 modifier = Modifier
-                    .clickable { expanded = !expanded }
+                    .clickable { showBottomSheet = true }
                     .padding(vertical = 8.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
@@ -48,19 +48,12 @@ internal fun CurrencyDropdown(
                     imageVector = Icons.Filled.ArrowDropDown,
                     contentDescription = stringResource(id = CoreUiR.string.currency_dropdown_menu),
                 )
-                DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-                    Currency.entries.forEach {
-                        DropdownMenuItem(
-                            text = {
-                                Text(text = it.name)
-                            },
-                            onClick = {
-                                expanded = false
-
-                                onOptionSelected(it)
-                            },
-                        )
-                    }
+                if (showBottomSheet) {
+                    CurrencyBottomSheetMenu(
+                        currentCurrency = currency,
+                        onDismissRequest = { showBottomSheet = false },
+                        onOptionSelected = onOptionSelected
+                    )
                 }
             }
         }

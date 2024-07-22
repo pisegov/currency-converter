@@ -33,12 +33,12 @@ internal fun DataInputFields(
             },
             isError = isError,
         )
-        CurrencyDropdown(
+        CurrencyMenuButton(
             currency = conversionInfo.fromCurrency,
             topText = stringResource(id = CoreUiR.string.from),
             onOptionSelected = { sendUserEvent(Event.User.UpdateFromCurrency(it)) },
         )
-        CurrencyDropdown(
+        CurrencyMenuButton(
             currency = conversionInfo.toCurrency,
             topText = stringResource(id = CoreUiR.string.to),
             onOptionSelected = { sendUserEvent(Event.User.UpdateToCurrency(it)) },
