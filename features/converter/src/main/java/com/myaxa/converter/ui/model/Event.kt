@@ -27,6 +27,6 @@ internal sealed interface Event {
 
         data class DecimalStringFormatResult(val formattedString: String) : System
 
-        data object AmountValidationError : System
+        data class AmountValidationError(val messageStringResourceId: Int) : System
     }
 }

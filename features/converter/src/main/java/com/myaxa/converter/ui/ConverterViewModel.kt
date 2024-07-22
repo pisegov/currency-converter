@@ -2,6 +2,8 @@ package com.myaxa.converter.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.myaxa.converter.domain.usecase.DecimalStringValidateUseCase
+import com.myaxa.converter.domain.model.DecimalStringValidationResult
 import com.myaxa.converter.domain.usecase.FormatDecimalStringUseCase
 import com.myaxa.converter.domain.usecase.PerformConversionUseCase
 import com.myaxa.converter.ui.model.Command
@@ -10,8 +12,8 @@ import com.myaxa.converter.ui.model.ConversionOperationStatus
 import com.myaxa.converter.ui.model.ConverterScreenEffect
 import com.myaxa.converter.ui.model.Event
 import com.myaxa.converter.ui.model.State
-import com.myaxa.converter.ui.model.amountIsValid
 import com.myaxa.converter.ui.model.toDomainModel
+import com.myaxa.converter.ui.util.DecimalStringValidationErrorMapper
 import com.myaxa.util.onFailure
 import com.myaxa.util.onSuccess
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -32,6 +34,8 @@ import javax.inject.Inject
 internal class ConverterViewModel @Inject constructor(
     private val performConversionUseCase: PerformConversionUseCase,
     private val decimalStringFormatUseCase: FormatDecimalStringUseCase,
+    private val decimalStringValidateUseCase: DecimalStringValidateUseCase,
+    private val validationResultMapper: DecimalStringValidationErrorMapper,
     private val reducer: Reducer,
 ) : ViewModel() {
 
@@ -73,8 +77,14 @@ internal class ConverterViewModel @Inject constructor(
 
     private fun performConversion(conversionInfo: ConversionInfoUi) {
 
-        if (!conversionInfo.amountIsValid()) {
-            reduce(Event.System.AmountValidationError)
+        val validationResult = decimalStringValidateUseCase(conversionInfo.amountString)
+        if (validationResult is DecimalStringValidationResult.Error) {
+            reduce(
+                Event.System.AmountValidationError(
+                    messageStringResourceId = validationResultMapper
+                        .mapErrorToMessage(validationResult)
+                )
+            )
             return
         }
 

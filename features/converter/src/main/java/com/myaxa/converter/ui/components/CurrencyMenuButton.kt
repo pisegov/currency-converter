@@ -20,7 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.myaxa.ui.R as CoreUiR
+import com.myaxa.converter.R
 import com.myaxa.domain.Currency
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,7 +46,7 @@ internal fun CurrencyMenuButton(
                 Text(text = currency.name)
                 Icon(
                     imageVector = Icons.Filled.ArrowDropDown,
-                    contentDescription = stringResource(id = CoreUiR.string.currency_dropdown_menu),
+                    contentDescription = stringResource(id = R.string.currency_dropdown_menu),
                 )
                 if (showBottomSheet) {
                     CurrencyBottomSheetMenu(

@@ -60,8 +60,12 @@ internal class Reducer @Inject constructor() {
             )
         }
 
-        Event.System.AmountValidationError -> {
-            state.copy(conversionOperationStatus = ConversionOperationStatus.AmountValidationError)
+        is Event.System.AmountValidationError -> {
+            state.copy(
+                conversionOperationStatus = ConversionOperationStatus.AmountValidationError(
+                    messageStringResourceId = event.messageStringResourceId
+                )
+            )
         }
     }
 }

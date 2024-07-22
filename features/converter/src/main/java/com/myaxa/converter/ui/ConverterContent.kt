@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.myaxa.converter.R
 import com.myaxa.converter.ui.components.DataInputFields
 import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.ConversionOperationStatus
@@ -67,23 +68,30 @@ internal fun ConverterContent(
                     horizontal = dimensionResource(id = CoreUiR.dimen.content_horizontal_padding),
                 )
         ) {
+
             Text(
-                text = stringResource(id = CoreUiR.string.converter_title),
+                text = stringResource(id = R.string.converter_title),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge,
             )
+
+            val amountValidationErrorText = (state.conversionOperationStatus
+                    as? ConversionOperationStatus.AmountValidationError)
+                ?.messageStringResourceId?.let {
+                    stringResource(id = it)
+                }
             DataInputFields(
                 conversionInfo = state.conversionInfo,
                 sendUserEvent = sendUserEvent,
-                isError = state.conversionOperationStatus
-                        is ConversionOperationStatus.AmountValidationError,
+                amountValidationErrorText = amountValidationErrorText,
                 clearFocus = { focusManager.clearFocus() },
             )
+
             Button(
                 onClick = { sendUserEvent(Event.User.Convert) },
             ) {
                 Text(
-                    text = stringResource(id = CoreUiR.string.convert),
+                    text = stringResource(id = R.string.convert),
                     modifier = Modifier.padding(16.dp)
                 )
             }

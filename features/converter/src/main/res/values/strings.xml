@@ -2,15 +2,13 @@
 <resources>
     <string name="converter_title">Currency converter</string>
     <string name="amount">Amount</string>
-    <string name="invalid_amount">This is not a valid amount</string>
+    <string name="amount_is_empty">The amount is empty</string>
+    <string name="amount_contains_no_numbers">The amount does not contain numbers</string>
+    <string name="amount_is_incorrect">The amount specified is incorrect</string>
     <string name="error">Error</string>
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="currency_dropdown_menu">Currency dropdown menu</string>
     <string name="convert">Convert</string>
     <string name="network_error">Network error</string>
-    <string name="conversion_result_title">Conversion result</string>
-    <string name="go_back">Go back</string>
-
-    <string name="conversion_result">%1$s %2$s ≈ %3$s %4$s</string>
 </resources>

@@ -44,13 +44,13 @@ internal fun ConversionResultScreen(
             )
     ) {
         Text(
-            text = stringResource(id = CoreUiR.string.conversion_result_title),
+            text = stringResource(id = R.string.conversion_result_title),
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleLarge,
         )
         Text(
             text = stringResource(
-                id = CoreUiR.string.conversion_result,
+                id = R.string.conversion_result,
                 arguments.amount,
                 arguments.fromCurrency,
                 arguments.result,
@@ -67,10 +67,10 @@ internal fun ConversionResultScreen(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(id = CoreUiR.string.go_back),
+                    contentDescription = stringResource(id = R.string.go_back),
                 )
                 Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                Text(text = stringResource(id = CoreUiR.string.go_back))
+                Text(text = stringResource(id = R.string.go_back))
             }
         }
     }

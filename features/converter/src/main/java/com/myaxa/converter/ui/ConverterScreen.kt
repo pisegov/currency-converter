@@ -8,11 +8,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import com.myaxa.converter.R
 import com.myaxa.converter.ui.model.ConversionOperationStatus.*
 import com.myaxa.converter.ui.model.ConverterScreenEffect
 import com.myaxa.converter.ui.model.Event
 import com.myaxa.ui.viewModel.daggerViewModel
-import com.myaxa.ui.R as CoreUiR
 
 @Composable
 internal fun ConverterScreen(
@@ -33,13 +33,13 @@ internal fun ConverterScreen(
         is NetworkError -> {
             Toast.makeText(
                 LocalContext.current,
-                stringResource(id = CoreUiR.string.network_error),
+                stringResource(id = R.string.network_error),
                 Toast.LENGTH_SHORT,
             ).show()
             viewModel.obtainUserEvent(Event.User.SetNetworkErrorShown)
         }
 
-        Idle, Loading, AmountValidationError -> Unit
+        Idle, Loading, is AmountValidationError -> Unit
     }
 
     ConverterContent(

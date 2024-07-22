@@ -11,5 +11,5 @@ internal sealed interface ConversionOperationStatus {
 
     data object NetworkError : ConversionOperationStatus
 
-    data object AmountValidationError : ConversionOperationStatus
+    data class AmountValidationError(val messageStringResourceId: Int) : ConversionOperationStatus
 }

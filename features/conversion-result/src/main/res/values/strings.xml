@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="conversion_result_title">Conversion result</string>
+    <string name="go_back">Go back</string>
+
+    <string name="conversion_result" translatable="false">%1$s %2$s ≈ %3$s %4$s</string>
+</resources>

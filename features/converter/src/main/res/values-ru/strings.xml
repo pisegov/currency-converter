@@ -2,13 +2,13 @@
 <resources>
     <string name="converter_title">Конвертер валют</string>
     <string name="amount">Сумма</string>
+    <string name="amount_is_empty">Сумма не может быть пустой</string>
+    <string name="amount_contains_no_numbers">В сумме должны присутствовать цифры</string>
+    <string name="amount_is_incorrect">Введена неверная сумма</string>
     <string name="error">Ошибка</string>
-    <string name="invalid_amount">Это неверная сумма</string>
     <string name="from">Из</string>
     <string name="to">В</string>
     <string name="currency_dropdown_menu">Меню выбора валюты</string>
     <string name="convert">Конвертировать</string>
     <string name="network_error">Ошибка сети</string>
-    <string name="conversion_result_title">Результат конвертации</string>
-    <string name="go_back">Назад</string>
 </resources>

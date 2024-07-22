@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.myaxa.ui.R as CoreUiR
+import com.myaxa.converter.R
 
 @Composable
 internal fun AmountTextField(
@@ -24,18 +24,21 @@ internal fun AmountTextField(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     onDone: KeyboardActionScope.() -> Unit = {},
-    isError: Boolean = false,
+    errorText: String? = null,
 ) {
+
+    val isError: Boolean = errorText != null
+
     OutlinedTextField(
         value = text,
         onValueChange = onValueChange,
         modifier = modifier.widthIn(100.dp, 150.dp),
-        label = { Text(text = stringResource(id = CoreUiR.string.amount)) },
+        label = { Text(text = stringResource(id = R.string.amount)) },
         supportingText = {
-            if (isError) {
+            if (errorText != null) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = stringResource(id = CoreUiR.string.invalid_amount),
+                    text = errorText,
                     color = MaterialTheme.colorScheme.error
                 )
             }
@@ -44,7 +47,7 @@ internal fun AmountTextField(
             if (isError) {
                 Icon(
                     Icons.Filled.Info,
-                    stringResource(id = CoreUiR.string.error),
+                    stringResource(id = R.string.error),
                     tint = MaterialTheme.colorScheme.error
                 )
             }
