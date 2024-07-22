@@ -1,11 +1,12 @@
 #+title: Конвертер валют
-#+html: <a href>
-#+html:   <img src="assets/1.jpg" width="180"/>
-#+html:   <img src="assets/2.jpg" width="180"/>
-#+html:   <img src="assets/3.jpg" width="180"/>
-#+html: </a>
 
 Простое приложение для конвертации валют
+
+#+html: <a href>
+#+html:   <img src="assets/1.jpg" width="260"/>
+#+html:   <img src="assets/2.jpg" width="260"/>
+#+html:   <img src="assets/3.jpg" width="260"/>
+#+html: </a>
 
 * Запуск
 - Для сборки использовалась Android Studio Koala 2024.1.1 c Android Gradle Plugin версии 8.5.1
@@ -25,6 +26,30 @@ API_KEY="<ваш_api_key>"
 - Поле ввода суммы конвертации
 - Выпадающие списки для выбора базовой валюты и валюты конвертации
 - Кнопку для запуска конвертации
+
+*** Архитектура презентационного слоя
+В качестве архитектуры выбрана реализация MVI по следующей схеме:
+#+html: <a href>
+#+html:   <img src="assets/mvi.jpg"/>
+#+html: </a>
+
+**** Компоненты
+- =Actor= - объект для выполнения сложных операций и похода в сеть, реализован через [[https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.channels/actor.html][actor]]
+- =Reducer= - компонент, отвечающий за изменение состояния экрана
+- =State= - состояние экрана
+  - State value - текущее значение состояния
+  - State update - обновление состояния
+
+**** Действия
+- =Event= - события, направленные на изменение состояния
+  - =User= - событие взаимодействия пользователя с интерфейсом
+  - =System= - внутреннее событие, несущее в себе результат выполнения операции
+- =Command= - команда для =Actor= на выполнение сложной операции
+- =Effect= - событие, требующее обработки один раз
+
+**** Переходы
+- Сплошная линия - прямой вызов
+- Пунктирная линия - экспорт с помощью [[https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/][Flow]]
 
 ** Экран отображения результата
 - Отображает сконвертированную сумму в выбранной валюте
