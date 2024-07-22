@@ -2,6 +2,7 @@
 #+html: <a href>
 #+html:   <img src="assets/1.jpg" width="180"/>
 #+html:   <img src="assets/2.jpg" width="180"/>
+#+html:   <img src="assets/3.jpg" width="180"/>
 #+html: </a>
 
 Простое приложение для конвертации валют
