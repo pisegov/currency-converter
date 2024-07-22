@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.myaxa.converter.R
 import com.myaxa.converter.ui.model.ConversionInfoUi
-import com.myaxa.converter.ui.model.Event
+import com.myaxa.converter.ui.mvi.Event
 
 @Composable
 internal fun DataInputFields(

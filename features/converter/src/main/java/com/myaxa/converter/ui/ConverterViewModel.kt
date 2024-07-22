@@ -2,17 +2,18 @@ package com.myaxa.converter.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.myaxa.converter.domain.usecase.DecimalStringValidateUseCase
 import com.myaxa.converter.domain.model.DecimalStringValidationResult
+import com.myaxa.converter.domain.usecase.DecimalStringValidateUseCase
 import com.myaxa.converter.domain.usecase.FormatDecimalStringUseCase
 import com.myaxa.converter.domain.usecase.PerformConversionUseCase
-import com.myaxa.converter.ui.model.Command
 import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.ConversionOperationStatus
-import com.myaxa.converter.ui.model.ConverterScreenEffect
-import com.myaxa.converter.ui.model.Event
-import com.myaxa.converter.ui.model.State
 import com.myaxa.converter.ui.model.toDomainModel
+import com.myaxa.converter.ui.mvi.Command
+import com.myaxa.converter.ui.mvi.ConverterScreenEffect
+import com.myaxa.converter.ui.mvi.Event
+import com.myaxa.converter.ui.mvi.Reducer
+import com.myaxa.converter.ui.mvi.State
 import com.myaxa.converter.ui.util.DecimalStringValidationErrorMapper
 import com.myaxa.util.onFailure
 import com.myaxa.util.onSuccess

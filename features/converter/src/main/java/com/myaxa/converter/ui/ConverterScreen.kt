@@ -10,8 +10,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.myaxa.converter.R
 import com.myaxa.converter.ui.model.ConversionOperationStatus.*
-import com.myaxa.converter.ui.model.ConverterScreenEffect
-import com.myaxa.converter.ui.model.Event
+import com.myaxa.converter.ui.mvi.ConverterScreenEffect
+import com.myaxa.converter.ui.mvi.Event
 import com.myaxa.ui.viewModel.daggerViewModel
 
 @Composable

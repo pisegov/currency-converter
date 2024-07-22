@@ -1,9 +1,6 @@
-package com.myaxa.converter.ui
+package com.myaxa.converter.ui.mvi
 
-import com.myaxa.converter.ui.model.Command
 import com.myaxa.converter.ui.model.ConversionOperationStatus
-import com.myaxa.converter.ui.model.Event
-import com.myaxa.converter.ui.model.State
 import kotlinx.coroutines.channels.SendChannel
 import javax.inject.Inject
 

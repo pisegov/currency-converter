@@ -26,8 +26,8 @@ import com.myaxa.converter.R
 import com.myaxa.converter.ui.components.DataInputFields
 import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.ConversionOperationStatus
-import com.myaxa.converter.ui.model.Event
-import com.myaxa.converter.ui.model.State
+import com.myaxa.converter.ui.mvi.Event
+import com.myaxa.converter.ui.mvi.State
 import com.myaxa.ui.R as CoreUiR
 
 @Composable
