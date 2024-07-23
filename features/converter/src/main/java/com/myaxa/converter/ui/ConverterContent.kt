@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -28,6 +27,7 @@ import com.myaxa.converter.ui.model.ConversionInfoUi
 import com.myaxa.converter.ui.model.ConversionOperationStatus
 import com.myaxa.converter.ui.mvi.Event
 import com.myaxa.converter.ui.mvi.State
+import com.myaxa.ui.throttledClickListener.ThrottledButton
 import com.myaxa.ui.R as CoreUiR
 
 @Composable
@@ -87,7 +87,7 @@ internal fun ConverterContent(
                 clearFocus = { focusManager.clearFocus() },
             )
 
-            Button(
+            ThrottledButton(
                 onClick = { sendUserEvent(Event.User.Convert) },
             ) {
                 Text(

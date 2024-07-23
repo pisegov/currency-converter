@@ -25,7 +25,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
@@ -45,7 +44,7 @@ internal class ConverterViewModel @Inject constructor(
     val state: StateFlow<State> = _state.asStateFlow()
 
     private val _effects = Channel<ConverterScreenEffect>()
-    val effects: Flow<ConverterScreenEffect> = _effects.receiveAsFlow().distinctUntilChanged()
+    val effects: Flow<ConverterScreenEffect> = _effects.receiveAsFlow()
 
     fun obtainUserEvent(userEvent: Event.User) = reduce(userEvent)
 
